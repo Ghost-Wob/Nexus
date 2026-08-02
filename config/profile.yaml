@@ -1,0 +1,33 @@
+name: Loïc
+
+goal: Premier LLCER Japonais
+
+languages:
+  native:
+    - français
+
+  learning:
+    - japonais
+    - anglais
+
+learning:
+
+  context: true
+
+  graph: true
+
+  examples: true
+
+  emotions: true
+
+  comparisons: true
+
+  active_recall: true
+
+memory:
+
+  strongest:
+    - emotion
+
+  weakest:
+    - repetitive

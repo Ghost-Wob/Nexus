@@ -1,0 +1,22 @@
+project:
+  name: Nexus
+
+database:
+  path: database/nexus.db
+
+models:
+  researcher: qwen3:8b
+  teacher: qwen3:8b
+  reviewer: qwen3:8b
+
+knowledge:
+  root: knowledge/
+
+vector:
+  path: vector/
+
+markdown:
+  export: knowledge/
+
+language:
+  default: japanese
