@@ -1,22 +1,27 @@
-import ollama
+from pathlib import Path
+
+from app.ai.manager import AIManager
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+teacher_prompt = (
+    ROOT /
+    "app" /
+    "prompts" /
+    "teacher.txt"
+).read_text(encoding="utf-8")
 
 
 question = input("Question : ")
 
-response = ollama.chat(
-    model="qwen3:8b",
-    messages=[
-        {
-            "role": "system",
-            "content": open(
-                "app/prompts/teacher.txt"
-            ).read()
-        },
-        {
-            "role": "user",
-            "content": question
-        }
-    ]
+ai = AIManager()
+
+answer = ai.ask(
+    role="teacher",
+    system_prompt=teacher_prompt,
+    user_prompt=question
 )
 
-print(response["message"]["content"])
+print()
+print(answer)
