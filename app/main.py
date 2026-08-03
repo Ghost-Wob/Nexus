@@ -2,6 +2,7 @@ from pathlib import Path
 
 from app.ai.manager import AIManager
 from app.markdown.exporter import MarkdownExporter
+from app.utils.slug import slugify
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,7 +32,7 @@ exporter = MarkdownExporter()
 
 path = exporter.save(
     category="japanese",
-    filename="test",
+    filename=slugify(question),
     title=question,
     content=answer
 )
