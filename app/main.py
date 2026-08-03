@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from app.ai.manager import AIManager
+from app.markdown.exporter import MarkdownExporter
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,3 +26,15 @@ answer = ai.ask(
 
 print()
 print(answer)
+
+exporter = MarkdownExporter()
+
+path = exporter.save(
+    category="japanese",
+    filename="test",
+    title=question,
+    content=answer
+)
+
+print()
+print(f"Saved : {path}")
