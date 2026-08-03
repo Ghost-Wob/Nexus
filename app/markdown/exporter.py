@@ -34,4 +34,4 @@ created: "{datetime.now().isoformat()}"
 
         file.write_text(markdown, encoding="utf-8")
 
-        return file
+        return str(file)

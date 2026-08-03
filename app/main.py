@@ -3,6 +3,7 @@ from pathlib import Path
 from app.ai.manager import AIManager
 from app.markdown.exporter import MarkdownExporter
 from app.utils.slug import slugify
+from app.database.repository import ConceptRepository
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,6 +37,25 @@ path = exporter.save(
     title=question,
     content=answer
 )
+
+repository = ConceptRepository()
+
+slug = slugify(question)
+
+if not repository.exists(slug):
+
+    repository.insert(
+        title=question,
+        slug=slug,
+        category="japanese",
+        markdown=path
+    )
+
+    print("Concept ajouté à la base.")
+
+else:
+
+    print("Concept déjà existant.")
 
 print()
 print(f"Saved : {path}")
