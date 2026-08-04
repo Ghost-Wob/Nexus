@@ -46,3 +46,13 @@ class ConceptRepository:
         return self.db.fetchall(
             "SELECT * FROM concepts"
         )
+    def find_by_slug(self, slug):
+    
+        return self.db.fetchone(
+            """
+            SELECT *
+            FROM concepts
+            WHERE slug = ?
+            """,
+            (slug,)
+        )
